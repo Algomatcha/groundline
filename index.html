@@ -297,11 +297,11 @@ GROUNDLINE
 <text x="70" y="218" fill="#8A8571" font-family="Chakra Petch, monospace" font-size="10">BASE</text>
 <g fill="none" stroke="#C8B07E" stroke-opacity=".5" stroke-dasharray="3 5" opacity="0">
 <path d="M140 230 250 160 410 120M140 230 320 240 440 210M250 160 320 240 430 320M410 120 440 210"/>
-<animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;.55;.65;.95;1" dur="12s" repeatCount="indefinite"/>
+<animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;.55;.65;.92;.96" dur="12s" repeatCount="indefinite"/>
 </g>
 <g fill="none" stroke="#E5603F" stroke-opacity=".7" stroke-dasharray="4 5" opacity="0">
 <path d="M440 210 540 150M430 320 575 310"/>
-<animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;.62;.7;.95;1" dur="12s" repeatCount="indefinite"/>
+<animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;.62;.7;.92;.96" dur="12s" repeatCount="indefinite"/>
 </g>
 <g><use href="#unit"/><animateMotion dur="12s" repeatCount="indefinite" rotate="auto" keyPoints="0;1;1" keyTimes="0;.55;1" calcMode="linear" path="M140 230C190 200 220 170 250 160"/></g>
 <g><use href="#unit"/><animateMotion dur="12s" repeatCount="indefinite" rotate="auto" keyPoints="0;1;1" keyTimes="0;.55;1" calcMode="linear" path="M140 230C210 240 270 250 320 240"/></g>
@@ -449,7 +449,69 @@ const frameHero = () => {
 frameHero();
 narrow.addEventListener('change', frameHero);
 
-if (matchMedia('(prefers-reduced-motion: reduce)').matches) ['hero-svg','hud','hud2'].forEach(id => document.getElementById(id).pauseAnimations());
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const NS = 'http://www.w3.org/2000/svg';
+const num = v => parseFloat(v) || 0;
+const keys = v => v && v.split(';').map(Number);
+const interp = (t, times, vals) => {
+  for (let i = 1; i < times.length; i++) if (t <= times[i]) return vals[i - 1] + (vals[i] - vals[i - 1]) * ((t - times[i - 1]) / ((times[i] - times[i - 1]) || 1));
+  return vals[vals.length - 1];
+};
+const tracks = [];
+const pings = [...document.querySelectorAll('svg .ping')];
+pings.forEach(c => { c.dataset.r = c.getAttribute('r'); c.classList.remove('ping'); });
+document.querySelectorAll('svg animateMotion').forEach(a => {
+  const svg = a.ownerSVGElement, mp = a.querySelector('mpath');
+  let p = mp && svg.querySelector(mp.getAttribute('href'));
+  if (!p) { p = document.createElementNS(NS, 'path'); p.setAttribute('d', a.getAttribute('path')); p.setAttribute('fill', 'none'); svg.appendChild(p); }
+  tracks.push({ type: 'move', el: a.parentNode, p, len: p.getTotalLength(), dur: num(a.getAttribute('dur')), begin: num(a.getAttribute('begin')), kp: keys(a.getAttribute('keyPoints')), kt: keys(a.getAttribute('keyTimes')), seed: tracks.length * 1.7 });
+  a.remove();
+});
+document.querySelectorAll('svg animateTransform').forEach(a => {
+  const [, cx, cy] = a.getAttribute('from').trim().split(/\s+/).map(Number);
+  tracks.push({ type: 'spin', el: a.parentNode, cx, cy, dur: num(a.getAttribute('dur')), begin: 0 });
+  a.remove();
+});
+document.querySelectorAll('svg animate[attributeName="opacity"]').forEach(a => {
+  tracks.push({ type: 'fade', el: a.parentNode, dur: num(a.getAttribute('dur')), begin: 0, vals: keys(a.getAttribute('values')), kt: keys(a.getAttribute('keyTimes')) });
+  a.remove();
+});
+const frame = now => {
+  const t = now / 1000;
+  for (const k of tracks) {
+    const ph = ((((t - k.begin) % k.dur) + k.dur) % k.dur) / k.dur;
+    if (k.type === 'move') {
+      const l = (k.kp ? interp(ph, k.kt, k.kp) : ph) * k.len;
+      const pt = k.p.getPointAtLength(l), a = k.p.getPointAtLength(Math.max(0, l - 1)), b = k.p.getPointAtLength(Math.min(k.len, l + 1));
+      let x = pt.x, y = pt.y, ang = Math.atan2(b.y - a.y, b.x - a.x);
+      if (k.kp) {
+        const held = Math.max(0, ph - k.kt[1]) * k.dur;
+        const w = Math.min(1, held / 1.5), q = t * 0.9 + k.seed;
+        x += Math.cos(q) * 9 * w; y += Math.sin(q) * 9 * w;
+        if (w > 0) ang = ang * (1 - w) + (q + Math.PI / 2) * w;
+        k.el.setAttribute('opacity', Math.min(1, ph / 0.04, (1 - ph) / 0.06));
+      }
+      k.el.setAttribute('transform', `translate(${x} ${y}) rotate(${ang * 180 / Math.PI})`);
+    } else if (k.type === 'spin') {
+      k.el.setAttribute('transform', `rotate(${ph * 360} ${k.cx} ${k.cy})`);
+    } else {
+      k.el.setAttribute('opacity', interp(ph, k.kt, k.vals));
+    }
+  }
+  for (const c of pings) {
+    const q = ((t % 2) + 2) % 2 / 2;
+    c.setAttribute('r', c.dataset.r * (0.4 + 2.2 * q));
+    c.setAttribute('opacity', 1 - q);
+  }
+  last = performance.now();
+};
+let last = 0;
+const tick = () => { if (!reduce) { frame(performance.now()); requestAnimationFrame(tick); } };
+const start = () => { if (reduce) return frame(9000); requestAnimationFrame(tick); };
+setInterval(() => { if (!reduce && performance.now() - last > 250) frame(performance.now()); }, 40);
+addEventListener('pageshow', start);
+document.addEventListener('visibilitychange', () => { if (!document.hidden) start(); });
+start();
 
 document.getElementById('brief').addEventListener('submit', e => {
   if (e.target.getAttribute('action').startsWith('[')) {
