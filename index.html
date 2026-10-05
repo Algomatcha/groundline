@@ -6,9 +6,9 @@
 <title>Groundline — Everyone’s fighting for the sky. We’re taking the ground.</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..800&family=Chakra+Petch:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0D0F0A;--panel:#15180F;--line:#272B20;--line-2:#3C4130;--text:#ECE6D6;--body:#B4AD9A;--muted:#8A8571;--ice:#C8B07E;--alert:#E5603F;--sky:#6E9BD6;--od:#5E6B3A;--sans:'Archivo','Helvetica Neue',Arial,sans-serif;--mono:'IBM Plex Mono',ui-monospace,monospace}
+:root{--bg:#0D0F0A;--panel:#15180F;--line:#272B20;--line-2:#3C4130;--text:#ECE6D6;--body:#B4AD9A;--muted:#8A8571;--ice:#C8B07E;--alert:#E5603F;--sky:#6E9BD6;--od:#5E6B3A;--sans:'Archivo','Helvetica Neue',Arial,sans-serif;--mono:'Chakra Petch',ui-monospace,monospace}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;overflow-x:clip;background:var(--bg);color:var(--text);font:400 17px/1.6 var(--sans)}
@@ -44,13 +44,18 @@ nav .btn{padding:12px 20px}
 .hero h1{width:min(100%,10.5em);font-weight:800;font-size:clamp(34px,4.8vw,76px);line-height:.88;text-transform:uppercase}
 .hero h1 span{color:var(--sky)}
 .hero-side{display:grid;gap:16px;max-width:420px}
-@media (max-width:1040px){.hero-scene{opacity:.45}}
-.hero-side p{font-size:15px;color:var(--muted)}
-.profiles{list-style:none;margin:0;padding:0;display:grid;gap:6px;font-size:17px}
+@media (max-width:720px){
+.hero-scene{bottom:auto;height:52svh}
+.hero-shade{background:linear-gradient(180deg,rgba(13,15,10,.5) 0,rgba(13,15,10,0) 14%,rgba(13,15,10,0) 38%,rgba(13,15,10,.96) 54%)}
+}
+.hero-side p{font:500 16px/1.4 var(--mono);color:var(--muted)}
+.profiles{list-style:none;margin:0;padding:0;display:grid;gap:6px;font:500 18px/1.5 var(--mono)}
 .profiles li::before{content:"";display:inline-block;width:6px;height:6px;background:var(--ice);margin-right:12px;vertical-align:middle}
 
 .statement{font-weight:400;font-stretch:100%;font-size:clamp(28px,3.4vw,48px);line-height:1.18;letter-spacing:-.01em;color:var(--text);max-width:1120px}
-.statement .sky{color:var(--sky)}
+.statement{font-family:var(--mono);font-weight:500;letter-spacing:0}
+.statement span{display:block}
+.statement .sky{color:var(--sky);margin-bottom:.9em}
 .statement .earth{color:var(--ice)}
 
 .pillars{display:grid;border-top:1px solid var(--line)}
@@ -189,7 +194,7 @@ GROUNDLINE
 <rect x="1130" y="495" width="80" height="50" fill="none" stroke="#8A8571"/>
 <g><circle r="22" fill="#5E6B3A" fill-opacity=".2" stroke="#C8B07E" stroke-opacity=".3"/><path d="M8 0-6 6V-6Z" fill="#C8B07E"/><animateMotion dur="26s" begin="0s" repeatCount="indefinite" rotate="auto" path="M1010 400C1080 340 1260 330 1330 410S1350 640 1240 680 1020 640 1000 520 980 440 1010 400Z"/></g><g><circle r="22" fill="#5E6B3A" fill-opacity=".2" stroke="#C8B07E" stroke-opacity=".3"/><path d="M8 0-6 6V-6Z" fill="#C8B07E"/><animateMotion dur="26s" begin="-6.5s" repeatCount="indefinite" rotate="auto" path="M1010 400C1080 340 1260 330 1330 410S1350 640 1240 680 1020 640 1000 520 980 440 1010 400Z"/></g><g><circle r="22" fill="#5E6B3A" fill-opacity=".2" stroke="#C8B07E" stroke-opacity=".3"/><path d="M8 0-6 6V-6Z" fill="#C8B07E"/><animateMotion dur="26s" begin="-13s" repeatCount="indefinite" rotate="auto" path="M1010 400C1080 340 1260 330 1330 410S1350 640 1240 680 1020 640 1000 520 980 440 1010 400Z"/></g><g><circle r="22" fill="#5E6B3A" fill-opacity=".2" stroke="#C8B07E" stroke-opacity=".3"/><path d="M8 0-6 6V-6Z" fill="#C8B07E"/><animateMotion dur="26s" begin="-19.5s" repeatCount="indefinite" rotate="auto" path="M1010 400C1080 340 1260 330 1330 410S1350 640 1240 680 1020 640 1000 520 980 440 1010 400Z"/></g><g><circle r="22" fill="#5E6B3A" fill-opacity=".2" stroke="#C8B07E" stroke-opacity=".3"/><path d="M8 0-6 6V-6Z" fill="#C8B07E"/><animateMotion dur="14s" begin="-4s" repeatCount="indefinite" rotate="auto" path="M1170 520C1260 470 1380 380 1470 300"/></g>
 <g transform="translate(1490 280)"><circle class="ping" r="12" fill="none" stroke="#E5603F" stroke-width="1.5"/><path d="M-6-6 6 6M6-6-6 6" stroke="#E5603F" stroke-width="2"/></g>
-<g font-family="IBM Plex Mono, monospace" font-size="12" letter-spacing="1" fill="#8A8571">
+<g font-family="Chakra Petch, monospace" font-size="12" letter-spacing="1" fill="#8A8571">
 <text x="1500" y="262" fill="#E5603F">CONTACT 01</text>
 <text x="1320" y="514">500 M</text><text x="1460" y="514">1 KM</text>
 </g>
@@ -257,7 +262,7 @@ GROUNDLINE
 <path d="M90 120 250 70l220 30 90 120-40 140-210 40-180-50Z" fill="#5E6B3A" fill-opacity=".12" stroke="#3C4130" stroke-width="1.5"/>
 <path id="perim" d="M90 120 250 70l220 30 90 120-40 140-210 40-180-50Z" fill="none" stroke="#C8B07E" stroke-opacity=".55" stroke-dasharray="2 7"/>
 <rect x="270" y="200" width="100" height="64" fill="none" stroke="#8A8571"/>
-<text x="278" y="218" fill="#8A8571" font-family="IBM Plex Mono, monospace" font-size="10">PROTECTED</text>
+<text x="278" y="218" fill="#8A8571" font-family="Chakra Petch, monospace" font-size="10">PROTECTED</text>
 <g><use href="#unit"/><animateMotion dur="48s" repeatCount="indefinite" rotate="auto"><mpath href="#perim"/></animateMotion></g>
 <g><use href="#unit"/><animateMotion dur="48s" repeatCount="indefinite" rotate="auto" begin="-8s"><mpath href="#perim"/></animateMotion></g>
 <g><use href="#unit"/><animateMotion dur="48s" repeatCount="indefinite" rotate="auto" begin="-16s"><mpath href="#perim"/></animateMotion></g>
@@ -266,8 +271,8 @@ GROUNDLINE
 <g><use href="#unit"/><animateMotion dur="48s" repeatCount="indefinite" rotate="auto" begin="-40s"><mpath href="#perim"/></animateMotion></g>
 <g transform="translate(560 74)"><circle class="ping" r="10" fill="none" stroke="#E5603F" stroke-width="1.5"/><path d="M-6-6 6 6M6-6-6 6" stroke="#E5603F" stroke-width="2"/></g>
 <path d="M470 100 552 78M560 220 562 86" stroke="#E5603F" stroke-opacity=".7" stroke-dasharray="4 5"/>
-<text x="476" y="50" fill="#E5603F" font-family="IBM Plex Mono, monospace" font-size="11">CONTACT 01</text>
-<g font-family="IBM Plex Mono, monospace" font-size="10" fill="#8A8571">
+<text x="476" y="50" fill="#E5603F" font-family="Chakra Petch, monospace" font-size="11">CONTACT 01</text>
+<g font-family="Chakra Petch, monospace" font-size="10" fill="#8A8571">
 <text x="16" y="24">SECTOR ECHO</text>
 <text x="16" y="444">[GRID REF]</text>
 <text x="560" y="444">500 m</text>
@@ -283,13 +288,13 @@ GROUNDLINE
 <rect x="470" width="170" height="460" fill="#E5603F" fill-opacity=".06"/>
 <path d="M170 0v460" stroke="#C8B07E" stroke-opacity=".5" stroke-dasharray="2 7"/>
 <path d="M470 0v460" stroke="#E5603F" stroke-opacity=".6" stroke-dasharray="6 6"/>
-<g font-family="IBM Plex Mono, monospace" font-size="10">
+<g font-family="Chakra Petch, monospace" font-size="10">
 <text x="16" y="24" fill="#C8B07E">FRIENDLY</text>
 <text x="284" y="24" fill="#8A8571">DEEP FIELD</text>
 <text x="486" y="24" fill="#E5603F">ADVERSARY</text>
 </g>
 <rect x="60" y="200" width="80" height="60" fill="none" stroke="#8A8571"/>
-<text x="70" y="218" fill="#8A8571" font-family="IBM Plex Mono, monospace" font-size="10">BASE</text>
+<text x="70" y="218" fill="#8A8571" font-family="Chakra Petch, monospace" font-size="10">BASE</text>
 <g fill="none" stroke="#C8B07E" stroke-opacity=".5" stroke-dasharray="3 5" opacity="0">
 <path d="M140 230 250 160 410 120M140 230 320 240 440 210M250 160 320 240 430 320M410 120 440 210"/>
 <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;.55;.65;.95;1" dur="12s" repeatCount="indefinite"/>
@@ -305,7 +310,7 @@ GROUNDLINE
 <g><use href="#unit"/><animateMotion dur="12s" repeatCount="indefinite" rotate="auto" keyPoints="0;1;1" keyTimes="0;.55;1" calcMode="linear" path="M140 230C230 220 340 210 440 210"/></g>
 <g transform="translate(540 150)"><circle class="ping" r="10" fill="none" stroke="#E5603F" stroke-width="1.5"/><path d="M-6-6 6 6M6-6-6 6" stroke="#E5603F" stroke-width="2"/></g>
 <g transform="translate(575 310)"><path d="M-6-6 6 6M6-6-6 6" stroke="#E5603F" stroke-width="2"/></g>
-<g font-family="IBM Plex Mono, monospace" font-size="10" fill="#8A8571">
+<g font-family="Chakra Petch, monospace" font-size="10" fill="#8A8571">
 <text x="16" y="444">[GRID REF]</text>
 <text x="560" y="444">2 km</text>
 <path d="M520 434h30" stroke="#8A8571"/>
@@ -323,31 +328,31 @@ GROUNDLINE
 <div class="missions">
 <article class="mission"><span>01</span><div><h3>Perimeter security</h3><p>Persistent, coordinated patrol of bases, airfields, and critical sites. Units divide the perimeter, flag intrusions, and converge on contacts.</p></div><figure class="mfig"><svg viewBox="0 0 480 300" role="img" aria-label="Rovers patrolling a site perimeter and converging on an intrusion"><rect width="480" height="300" fill="url(#mgrid)"/>
 <path d="M70 80 220 50l170 30 50 110-80 70-200 10-90-80Z" fill="#5E6B3A" fill-opacity=".12" stroke="#C8B07E" stroke-opacity=".5" stroke-dasharray="2 7"/>
-<rect x="190" y="130" width="100" height="60" fill="none" stroke="#8A8571"/><text x="198" y="147" fill="#8A8571" font-family="IBM Plex Mono, monospace" font-size="10">SITE</text>
+<rect x="190" y="130" width="100" height="60" fill="none" stroke="#8A8571"/><text x="198" y="147" fill="#8A8571" font-family="Chakra Petch, monospace" font-size="10">SITE</text>
 <g transform="translate(70 80) rotate(-12)"><circle r="34" fill="#5E6B3A" fill-opacity=".18" stroke="#C8B07E" stroke-opacity=".25"/><path d="M7 0-5 5V-5Z" fill="#C8B07E"/></g><g transform="translate(390 80) rotate(20)"><circle r="34" fill="#5E6B3A" fill-opacity=".18" stroke="#C8B07E" stroke-opacity=".25"/><path d="M7 0-5 5V-5Z" fill="#C8B07E"/></g><g transform="translate(360 260) rotate(140)"><circle r="34" fill="#5E6B3A" fill-opacity=".18" stroke="#C8B07E" stroke-opacity=".25"/><path d="M7 0-5 5V-5Z" fill="#C8B07E"/></g><g transform="translate(160 270) rotate(190)"><circle r="34" fill="#5E6B3A" fill-opacity=".18" stroke="#C8B07E" stroke-opacity=".25"/><path d="M7 0-5 5V-5Z" fill="#C8B07E"/></g><g transform="translate(422 150) rotate(70)"><circle r="34" fill="#5E6B3A" fill-opacity=".18" stroke="#C8B07E" stroke-opacity=".25"/><path d="M7 0-5 5V-5Z" fill="#C8B07E"/></g>
 <g transform="translate(455 40)"><circle class="ping" r="9" fill="none" stroke="#E5603F" stroke-width="1.5"/><path d="M-5-5 5 5M5-5-5 5" stroke="#E5603F" stroke-width="2"/></g><path d="M390 80 447 47M422 150 452 50" stroke="#E5603F" stroke-opacity=".7" stroke-dasharray="4 5"/>
-<text x="14" y="22" fill="#8A8571" font-family="IBM Plex Mono, monospace" font-size="10">PERIMETER / 5 UNITS</text><text x="368" y="22" fill="#E5603F" font-family="IBM Plex Mono, monospace" font-size="10">INTRUSION</text></svg></figure></article>
+<text x="14" y="22" fill="#8A8571" font-family="Chakra Petch, monospace" font-size="10">PERIMETER / 5 UNITS</text><text x="368" y="22" fill="#E5603F" font-family="Chakra Petch, monospace" font-size="10">INTRUSION</text></svg></figure></article>
 <article class="mission"><span>02</span><div><h3>Remote monitoring</h3><p>Rovers drive out, park, and become quiet observation posts, watching roads, valleys, and approaches for hours or days.</p></div><figure class="mfig"><svg viewBox="0 0 480 300" role="img" aria-label="A parked rover watching a road with a wide sensor field of view"><rect width="480" height="300" fill="url(#mgrid)"/><g fill="none" stroke="#22261C" stroke-width="1.2"><path d="M0 60c80-20 140 10 220-10s170-40 260-10"/><path d="M0 90c90-15 150 15 230-5s160-35 250-5"/><path d="M0 250c100 10 180-30 260-15s150 30 220 10"/></g>
 <path d="M-10 200C120 180 220 120 300 140s130 40 200 10" fill="none" stroke="#3C4130" stroke-width="14"/>
 <path d="M-10 200C120 180 220 120 300 140s130 40 200 10" fill="none" stroke="#8A8571" stroke-dasharray="8 8"/>
 <path d="M90 250 330 90 470 230Z" fill="#C8B07E" fill-opacity=".07" stroke="#C8B07E" stroke-opacity=".4"/>
 <g transform="translate(90 250) rotate(-40)"><circle r="0" fill="#5E6B3A" fill-opacity=".18" stroke="#C8B07E" stroke-opacity=".25"/><path d="M7 0-5 5V-5Z" fill="#C8B07E"/></g><g transform="translate(330 140)"><circle class="ping" r="9" fill="none" stroke="#E5603F" stroke-width="1.5"/><path d="M-5-5 5 5M5-5-5 5" stroke="#E5603F" stroke-width="2"/></g>
-<text x="14" y="22" fill="#8A8571" font-family="IBM Plex Mono, monospace" font-size="10">OVERWATCH / STATIONARY</text><text x="14" y="286" fill="#C8B07E" font-family="IBM Plex Mono, monospace" font-size="10">ON STATION 38:12:04</text><text x="342" y="128" fill="#E5603F" font-family="IBM Plex Mono, monospace" font-size="10">VEHICLE</text></svg></figure></article>
+<text x="14" y="22" fill="#8A8571" font-family="Chakra Petch, monospace" font-size="10">OVERWATCH / STATIONARY</text><text x="14" y="286" fill="#C8B07E" font-family="Chakra Petch, monospace" font-size="10">ON STATION 38:12:04</text><text x="342" y="128" fill="#E5603F" font-family="Chakra Petch, monospace" font-size="10">VEHICLE</text></svg></figure></article>
 <article class="mission"><span>03</span><div><h3>Communications relay</h3><p>Units position themselves as a mobile mesh, extending and repairing links across terrain where line of sight is broken.</p></div><figure class="mfig"><svg viewBox="0 0 480 300" role="img" aria-label="Rovers forming a relay chain around a ridge that blocks line of sight"><rect width="480" height="300" fill="url(#mgrid)"/>
 <g fill="none" stroke="#30352A" stroke-width="1.2"><ellipse cx="240" cy="120" rx="70" ry="50"/><ellipse cx="240" cy="120" rx="48" ry="32"/><ellipse cx="240" cy="120" rx="24" ry="15"/></g>
-<text x="214" y="124" fill="#8A8571" font-family="IBM Plex Mono, monospace" font-size="10">RIDGE</text>
+<text x="214" y="124" fill="#8A8571" font-family="Chakra Petch, monospace" font-size="10">RIDGE</text>
 <path d="M60 150 420 140" stroke="#E5603F" stroke-opacity=".6" stroke-dasharray="3 5"/><path d="M234 138l12 12M246 138l-12 12" stroke="#E5603F" stroke-width="2"/>
 <path d="M60 150 150 230 250 250 340 225 420 140" fill="none" stroke="#C8B07E" stroke-opacity=".7" stroke-dasharray="4 5"/>
 <rect x="30" y="134" width="30" height="30" fill="none" stroke="#8A8571"/><rect x="420" y="126" width="30" height="30" fill="none" stroke="#8A8571"/>
 <g transform="translate(150 230) rotate(20)"><circle r="34" fill="#5E6B3A" fill-opacity=".18" stroke="#C8B07E" stroke-opacity=".25"/><path d="M7 0-5 5V-5Z" fill="#C8B07E"/></g><g transform="translate(250 250) rotate(0)"><circle r="34" fill="#5E6B3A" fill-opacity=".18" stroke="#C8B07E" stroke-opacity=".25"/><path d="M7 0-5 5V-5Z" fill="#C8B07E"/></g><g transform="translate(340 225) rotate(-20)"><circle r="34" fill="#5E6B3A" fill-opacity=".18" stroke="#C8B07E" stroke-opacity=".25"/><path d="M7 0-5 5V-5Z" fill="#C8B07E"/></g>
-<text x="14" y="22" fill="#8A8571" font-family="IBM Plex Mono, monospace" font-size="10">RELAY / 3 UNITS MESHED</text><text x="22" y="184" fill="#8A8571" font-family="IBM Plex Mono, monospace" font-size="10">BASE</text><text x="400" y="176" fill="#8A8571" font-family="IBM Plex Mono, monospace" font-size="10">FWD TEAM</text></svg></figure></article>
+<text x="14" y="22" fill="#8A8571" font-family="Chakra Petch, monospace" font-size="10">RELAY / 3 UNITS MESHED</text><text x="22" y="184" fill="#8A8571" font-family="Chakra Petch, monospace" font-size="10">BASE</text><text x="400" y="176" fill="#8A8571" font-family="Chakra Petch, monospace" font-size="10">FWD TEAM</text></svg></figure></article>
 <article class="mission"><span>04</span><div><h3>Deep-field sensor deployment</h3><p>Carry and emplace sensors deep in the field without putting people in harm’s way, then keep reporting back through the swarm.</p></div><figure class="mfig"><svg viewBox="0 0 480 300" role="img" aria-label="A rover traveling into the deep field and dropping sensors along its route"><rect width="480" height="300" fill="url(#mgrid)"/><g fill="none" stroke="#22261C" stroke-width="1.2"><path d="M0 60c80-20 140 10 220-10s170-40 260-10"/><path d="M0 90c90-15 150 15 230-5s160-35 250-5"/><path d="M0 250c100 10 180-30 260-15s150 30 220 10"/></g>
 <rect width="80" height="300" fill="#5E6B3A" fill-opacity=".18"/><path d="M80 0v300" stroke="#C8B07E" stroke-opacity=".5" stroke-dasharray="2 7"/>
 <path d="M40 160C120 150 160 110 230 120s120 60 190 40" fill="none" stroke="#C8B07E" stroke-opacity=".6" stroke-dasharray="6 6"/>
 <g transform="translate(150 135)"><circle r="22" fill="none" stroke="#C8B07E" stroke-opacity=".3" stroke-dasharray="2 4"/><path d="M0-5 5 0 0 5-5 0Z" fill="none" stroke="#C8B07E" stroke-width="1.5"/></g><g transform="translate(250 128)"><circle r="22" fill="none" stroke="#C8B07E" stroke-opacity=".3" stroke-dasharray="2 4"/><path d="M0-5 5 0 0 5-5 0Z" fill="none" stroke="#C8B07E" stroke-width="1.5"/></g><g transform="translate(345 160)"><circle r="22" fill="none" stroke="#C8B07E" stroke-opacity=".3" stroke-dasharray="2 4"/><path d="M0-5 5 0 0 5-5 0Z" fill="none" stroke="#C8B07E" stroke-width="1.5"/></g>
 <path d="M150 135 40 160M250 128 150 135M345 160 250 128" stroke="#C8B07E" stroke-opacity=".25"/>
 <g transform="translate(420 160) rotate(-15)"><circle r="34" fill="#5E6B3A" fill-opacity=".18" stroke="#C8B07E" stroke-opacity=".25"/><path d="M7 0-5 5V-5Z" fill="#C8B07E"/></g><g transform="translate(455 95)"><path d="M-5-5 5 5M5-5-5 5" stroke="#E5603F" stroke-width="2"/></g>
-<text x="14" y="22" fill="#C8B07E" font-family="IBM Plex Mono, monospace" font-size="10">FRIENDLY</text><text x="200" y="22" fill="#8A8571" font-family="IBM Plex Mono, monospace" font-size="10">DEEP FIELD / 3 SENSORS PLACED</text></svg></figure></article>
+<text x="14" y="22" fill="#C8B07E" font-family="Chakra Petch, monospace" font-size="10">FRIENDLY</text><text x="200" y="22" fill="#8A8571" font-family="Chakra Petch, monospace" font-size="10">DEEP FIELD / 3 SENSORS PLACED</text></svg></figure></article>
 <article class="mission"><span>05</span><div><h3>Combat power deployment</h3><p>Move payloads and capability forward to where the fight is, without putting crews or vehicles at risk on the approach.</p></div><figure class="mfig"><svg viewBox="0 0 480 300" role="img" aria-label="Rovers moving payloads from the friendly zone to forward positions near the adversary line">
 <rect width="480" height="300" fill="url(#mgrid)"/>
 <rect width="90" height="300" fill="#5E6B3A" fill-opacity=".18"/><path d="M90 0v300" stroke="#C8B07E" stroke-opacity=".5" stroke-dasharray="2 7"/>
@@ -358,7 +363,7 @@ GROUNDLINE
 <g transform="translate(430 120)"><path d="M-5-5 5 5M5-5-5 5" stroke="#E5603F" stroke-width="2"/></g>
 <g transform="translate(445 220)"><path d="M-5-5 5 5M5-5-5 5" stroke="#E5603F" stroke-width="2"/></g>
 <rect x="20" y="132" width="40" height="36" fill="none" stroke="#8A8571"/>
-<text x="14" y="22" fill="#C8B07E" font-family="IBM Plex Mono, monospace" font-size="10">FRIENDLY</text><text x="160" y="22" fill="#8A8571" font-family="IBM Plex Mono, monospace" font-size="10">3 PAYLOADS FORWARD</text><text x="392" y="22" fill="#E5603F" font-family="IBM Plex Mono, monospace" font-size="10">ADVERSARY</text><text x="300" y="286" fill="#8A8571" font-family="IBM Plex Mono, monospace" font-size="10">FWD POSITIONS</text></svg></figure></article>
+<text x="14" y="22" fill="#C8B07E" font-family="Chakra Petch, monospace" font-size="10">FRIENDLY</text><text x="160" y="22" fill="#8A8571" font-family="Chakra Petch, monospace" font-size="10">3 PAYLOADS FORWARD</text><text x="392" y="22" fill="#E5603F" font-family="Chakra Petch, monospace" font-size="10">ADVERSARY</text><text x="300" y="286" fill="#8A8571" font-family="Chakra Petch, monospace" font-size="10">FWD POSITIONS</text></svg></figure></article>
 </div>
 </section>
 
@@ -434,6 +439,15 @@ const onScroll = () => bar.classList.toggle('solid', scrollY > 40);
 addEventListener('scroll', onScroll, { passive: true });
 onScroll();
 
+
+const heroSvg = document.getElementById('hero-svg');
+const narrow = matchMedia('(max-width: 720px)');
+const frameHero = () => {
+  heroSvg.setAttribute('viewBox', narrow.matches ? '750 100 840 840' : '0 0 1600 900');
+  heroSvg.setAttribute('preserveAspectRatio', narrow.matches ? 'xMidYMid slice' : 'xMaxYMid slice');
+};
+frameHero();
+narrow.addEventListener('change', frameHero);
 
 if (matchMedia('(prefers-reduced-motion: reduce)').matches) ['hero-svg','hud','hud2'].forEach(id => document.getElementById(id).pauseAnimations());
 
