@@ -4,6 +4,22 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Groundline — Everyone’s fighting for the sky. We’re taking the ground.</title>
+<meta name="description" content="Groundline is building the missing ground layer: low-cost autonomous rover swarms for persistent sensing, communications, and deep-field deployment.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Groundline">
+<meta property="og:url" content="https://algomatcha.github.io/groundline/">
+<meta property="og:title" content="Groundline — Everyone’s fighting for the sky. We’re taking the ground.">
+<meta property="og:description" content="Groundline is building the missing ground layer: low-cost autonomous rover swarms for persistent sensing, communications, and deep-field deployment.">
+<meta property="og:image" content="https://algomatcha.github.io/groundline/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Groundline: Everyone’s fighting for the sky. Groundline is taking the ground.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Groundline — Everyone’s fighting for the sky. We’re taking the ground.">
+<meta name="twitter:description" content="Groundline is building the missing ground layer: low-cost autonomous rover swarms for persistent sensing, communications, and deep-field deployment.">
+<meta name="twitter:image" content="https://algomatcha.github.io/groundline/og.png">
+<meta name="theme-color" content="#0D0F0A">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 26 26'%3E%3Crect width='26' height='26' fill='%230D0F0A'/%3E%3Cg fill='none' stroke='%23C8B07E' stroke-width='2.2'%3E%3Cpath d='M13 2 24 8v10l-11 6-11-6V8Z'/%3E%3Cpath d='m8 15 5-5 5 5'/%3E%3C/g%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..800&family=Chakra+Petch:wght@400;500;600&display=swap" rel="stylesheet">
@@ -458,12 +474,6 @@ const interp = (t, times, vals) => {
   return vals[vals.length - 1];
 };
 const tracks = [];
-const onScreen = new Map();
-document.querySelectorAll('svg').forEach(v => onScreen.set(v, true));
-if ('IntersectionObserver' in window) {
-  const io = new IntersectionObserver(es => es.forEach(e => onScreen.set(e.target, e.isIntersecting)), { rootMargin: '100px' });
-  onScreen.forEach((_, v) => io.observe(v));
-}
 const pings = [...document.querySelectorAll('svg .ping')];
 pings.forEach(c => { c.dataset.r = c.getAttribute('r'); c.classList.remove('ping'); });
 document.querySelectorAll('svg animateMotion').forEach(a => {
@@ -485,7 +495,6 @@ document.querySelectorAll('svg animate[attributeName="opacity"]').forEach(a => {
 const frame = now => {
   const t = now / 1000;
   for (const k of tracks) {
-    if (!onScreen.get(k.el.ownerSVGElement)) continue;
     const ph = ((((t - k.begin) % k.dur) + k.dur) % k.dur) / k.dur;
     if (k.type === 'move') {
       const l = (k.kp ? interp(ph, k.kt, k.kp) : ph) * k.len;
@@ -506,7 +515,6 @@ const frame = now => {
     }
   }
   for (const c of pings) {
-    if (!onScreen.get(c.ownerSVGElement)) continue;
     const q = ((t % 2) + 2) % 2 / 2;
     c.setAttribute('r', c.dataset.r * (0.4 + 2.2 * q));
     c.setAttribute('opacity', 1 - q);
