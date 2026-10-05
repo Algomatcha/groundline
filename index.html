@@ -87,11 +87,6 @@ nav .btn{padding:12px 20px}
 .hud::before,.mfig::before{top:-2px;left:-2px;border-right:0;border-bottom:0}
 .hud::after,.mfig::after{bottom:-2px;right:-2px;border-left:0;border-top:0}
 .hero::after{content:"";position:absolute;inset:0;z-index:-1;background:repeating-linear-gradient(0deg,rgba(0,0,0,.18) 0 1px,transparent 1px 3px);pointer-events:none}
-.hero-status{width:100%;display:flex;flex-wrap:wrap;gap:12px 40px;padding-top:24px;border-top:1px solid var(--line);font:500 13px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--text)}
-.hero-status span{display:grid;gap:8px}
-.hero-status b{font-weight:400;font-size:11px;color:var(--muted)}
-.hero-status i{font-style:normal;color:var(--alert)}
-.hero-status em{font-style:normal;color:var(--ice)}
 .tag{display:flex;align-items:center;gap:10px}
 .tag::before{content:"";width:8px;height:8px;background:var(--ice)}
 .pillars article{transition:background .2s}
@@ -213,13 +208,6 @@ GROUNDLINE
 <li>Deep-field sensor deployment</li>
 <li>Combat power deployment</li>
 </ul>
-</div>
-<div class="hero-status" aria-hidden="true">
-<span><b>Units on station</b>06 / 06</span>
-<span><b>Mesh link</b>Nominal</span>
-<span><b>GNSS</b>Denied</span>
-<span><b>Contacts</b><i>01</i></span>
-<span><b>UTC</b><em id="utc">--:--:--</em></span>
 </div>
 </div>
 </section>
@@ -446,10 +434,6 @@ const onScroll = () => bar.classList.toggle('solid', scrollY > 40);
 addEventListener('scroll', onScroll, { passive: true });
 onScroll();
 
-
-const utc = document.getElementById('utc');
-const tick = () => utc.textContent = new Date().toISOString().slice(11, 19);
-tick(); setInterval(tick, 1000);
 
 if (matchMedia('(prefers-reduced-motion: reduce)').matches) ['hero-svg','hud','hud2'].forEach(id => document.getElementById(id).pauseAnimations());
 
